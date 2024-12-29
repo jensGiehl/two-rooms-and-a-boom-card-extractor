@@ -7,6 +7,7 @@ from the images.
 
 * Download the Print & Play version of the game: https://www.pnpparadise.com/set-4/two-rooms-and-a-boom
 * Open the PDFs and save them as PNG images (works with Adobe Acrobat).
+    * You may want to remove the "linked with" text, before saving the images. This works well with Adobe Acrobat Pro.
 * Configure the input and output directory (see `application.properties`).
 
 ## Limitations
