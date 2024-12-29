@@ -29,6 +29,9 @@ public class CardExtractorService {
     @Autowired
     private ColorRemoveService colorRemoveService;
 
+    @Autowired
+    private RemoveCuttingLineService removeCuttingLineService;
+
     public void extractCards(File imageFile, String outputDirectory) throws IOException {
 
         BufferedImage image = Imaging.getBufferedImage(imageFile);
@@ -40,6 +43,7 @@ public class CardExtractorService {
 
                 BufferedImage cardImage = image.getSubimage(x, y, CARD_WIDTH, CARD_HEIGHT);
                 cardImage = colorRemoveService.removeColorsAndMakeTransparent(cardImage);
+                cardImage = removeCuttingLineService.makeSingleColorColumnsTransparent(cardImage);
 
                 String filename = imageFile.getName() + "card_" + row + "_" + col + ".png";
                 LOGGER.info("Writing card to file: {}", filename);
